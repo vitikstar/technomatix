@@ -6,7 +6,10 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'language' => 'uk-UA',
+    'sourceLanguage' => 'uk-UA',
+    'timeZone' => 'Europe/Kiev',
+    'bootstrap' => ['log', 'debug'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -43,14 +46,16 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'class' => 'yii\web\UrlManager',
+            'showScriptName' => false, // Disable index.php
+            'enablePrettyUrl' => true, // Disable r= routes
             'rules' => [
-            ],
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ]
         ],
-        */
     ],
     'params' => $params,
 ];
