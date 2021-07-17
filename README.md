@@ -26,15 +26,15 @@
 
 ## ВСТАНОВЛЕННЯ
 
-На вашому компютери повінен буті встановленій git
+На вашому компютері повинен бути встановлений git
 
     https://git-scm.com/download
 
-Відкрийте термінал в тій папці куди бажаєте встановити додаток та введіть команду
+Відкрийте термінал в тій папці куди бажаєте встановити додаток та виконайте команду
 
     https://github.com/vitikstar/technomatix.git
 
-Перейдіть в папку technomatix (cd technomatix) та конайте команду
+Перейдіть в папку technomatix (cd technomatix) та виконайте команду
 
     composer update
 
@@ -42,7 +42,11 @@
 
     docker-compose up -d
 
-Виконайте всі міграції В СЕРЕДИНІ САМОГО КОНТЕЙНЕРА!!!
+Виконайте всі міграції В СЕРЕДИНІ САМОГО КОНТЕЙНЕРА в тому порядку як наведено!!!
+
+    docker-compose exec php php yii migrate --migrationPath=@mdm/admin/migrations
+
+    docker-compose exec php php yii migrate --migrationPath=@yii/rbac/migrations
 
     docker-compose exec php php yii migrate
 
@@ -52,10 +56,8 @@
 
 ## ДОКУМЕНТАЦІЯ ДО СТОРОННІХ РОЗШИРЕНЬ
 
-- [Журнал змін](CHANGELOG.md).
-- [Керівництво з авторизації](http://www.yiiframework.com/doc-2.0/guide-security-authorization.html). Важливо, прочитайте це спочатку, перш ніж продовжувати.
-- [Базова конфігурація](docs/guide/configuration.md)
-- [Основне використання](docs/guide/basic-usage.md).
-- [Управління користувачами](docs/guide/user-management.md).
-- [Використання меню](docs/guide/using-menu.md).
+- [Базова конфігурація](https://github.com/mdmsoft/yii2-admin/blob/master/docs/guide/configuration.md)
+- [Основне використання](https://github.com/mdmsoft/yii2-admin/blob/master/docs/guide/basic-usage.md).
+- [Управління користувачами](https://github.com/mdmsoft/yii2-admin/blob/master/docs/guide/user-management.md).
+- [Використання меню](https://github.com/mdmsoft/yii2-admin/blob/master/docs/guide/using-menu.md).
 - [Api](https://mdmsoft.github.io/yii2-admin/index.html).
