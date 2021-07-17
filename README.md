@@ -49,3 +49,13 @@
 Потім ви можете отримати доступ до програми за допомогою наступного URL:
 
     http://localhost:8000/
+
+## ДОКУМЕНТАЦІЯ ДО СТОРОННІХ РОЗШИРЕНЬ
+
+- [Журнал змін](CHANGELOG.md).
+- [Керівництво з авторизації](http://www.yiiframework.com/doc-2.0/guide-security-authorization.html). Важливо, прочитайте це спочатку, перш ніж продовжувати.
+- [Базова конфігурація](docs/guide/configuration.md)
+- [Основне використання](docs/guide/basic-usage.md).
+- [Управління користувачами](docs/guide/user-management.md).
+- [Використання меню](docs/guide/using-menu.md).
+- [Api](https://mdmsoft.github.io/yii2-admin/index.html).
