@@ -58,11 +58,14 @@ class GoodsHistoryOperationSearch extends GoodsHistoryOperation
 
         $this->load($params);
 
-        $this->updated_at = $params['updated_at'];
+        $this->updated_at = (isset($params['updated_at'])) ? $params['updated_at'] : '';
 
-        $arr_time = explode(" - ", $this->updated_at);
-        $this->createTimeStart = strtotime(trim($arr_time[0]));
-        $this->createTimeEnd = strtotime(trim($arr_time[1]));
+        if (isset($params['updated_at'])) {
+            $arr_time = explode(" - ", $this->updated_at);
+            $this->createTimeStart = strtotime(trim($arr_time[0]));
+            $this->createTimeEnd = strtotime(trim($arr_time[1]));
+        }
+
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -84,9 +87,11 @@ class GoodsHistoryOperationSearch extends GoodsHistoryOperation
                 'goods_id' => $this->goods_id
             ]);
 
-        // Agregar condicion de rango de fechas 
-        $query->andFilterWhere(['>=', 'updated_at', $this->createTimeStart])
-            ->andFilterWhere(['<', 'updated_at', $this->createTimeEnd]);
+        if (isset($params['updated_at'])) {
+            $query->andFilterWhere(['>=', 'updated_at', $this->createTimeStart])
+                ->andFilterWhere(['<', 'updated_at', $this->createTimeEnd]);
+        }
+
 
         return $dataProvider;
     }

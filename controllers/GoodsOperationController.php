@@ -16,7 +16,7 @@ class GoodsOperationController extends Controller
         $searchModel = new GoodsHistoryOperationSearch();
         $params = Yii::$app->request->queryParams;
 
-        $updated_at = $params['updated_at'];
+        $updated_at = (isset($params['updated_at'])) ? $params['updated_at'] : '';
 
         $dataProvider = $searchModel->search($params);
         return $this->render('index', [
