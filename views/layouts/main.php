@@ -40,8 +40,6 @@ AppAsset::register($this);
 
         $menuItems = [
             ['label' => 'Головна', 'url' => ['/site/index']],
-            ['label' => 'Товари', 'url' => ['/goods/index']],
-            ['label' => 'Користувачі', 'url' => ['/admin']],
         ];
 
         if (Yii::$app->user->isGuest) {
@@ -56,6 +54,9 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>';
+            $menuItems[] =  ['label' => 'Товари', 'url' => ['/goods/index']];
+            $menuItems[] =  ['label' => 'Історія', 'url' => ['/goods-operation/index']];
+            $menuItems[] =  ['label' => 'Користувачі', 'url' => ['/admin']];
         }
 
         echo Nav::widget([

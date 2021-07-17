@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\db\ar\Goods;
+use app\models\db\search\GoodsHistoryOperationSearch;
 use app\models\db\search\GoodsSearch;
 use app\models\SignupForm;
 use app\models\User;
@@ -26,6 +27,18 @@ class GoodsController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionHistory()
+    {
+
+        $searchModel = new GoodsHistoryOperationSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('history', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
