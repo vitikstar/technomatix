@@ -3,6 +3,7 @@
 use app\models\db\ar\Goods;
 use app\models\GoodsHistoryOperation;
 use app\models\User;
+use kartik\daterange\DateRangePicker;
 use kartik\grid\GridView;
 use mdm\admin\components\Helper;
 use yii\helpers\ArrayHelper;
@@ -56,7 +57,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'updated_at',
                 'content' => function ($data) {
                     return Yii::$app->formatter->asDatetime($data->updated_at, "long");
-                }
+                },
+                'filter' =>
+                DateRangePicker::widget([
+                    'name' => 'updated_at',
+                    'value' => $updated_at,
+                    'attribute' => 'updated_at',
+                    'convertFormat' => true,
+                    'pluginOptions' => [
+                        'timePicker' => true,
+                        'timePickerIncrement' => 1,
+                        'locale' => [
+                            'format' => 'Y-m-d h:i:s'
+                        ]
+                    ]
+                ])
             ],
             [
                 'class' => 'yii\grid\ActionColumn',

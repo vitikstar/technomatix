@@ -3,6 +3,7 @@
 namespace app\models\db\search;
 
 use app\models\db\ar\GoodsHistoryOperation;
+use kartik\daterange\DateRangeBehavior;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use Yii;
@@ -12,6 +13,10 @@ class GoodsHistoryOperationSearch extends GoodsHistoryOperation
     /**
      * {@inheritdoc}
      */
+
+    public $createTimeStart;
+    public $createTimeEnd;
+
 
     public function rules()
     {
@@ -53,6 +58,11 @@ class GoodsHistoryOperationSearch extends GoodsHistoryOperation
 
         $this->load($params);
 
+        $this->updated_at = $params['updated_at'];
+
+        $arr_time = explode(" - ", $this->updated_at);
+        $this->createTimeStart = strtotime(trim($arr_time[0]));
+        $this->createTimeEnd = strtotime(trim($arr_time[1]));
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -73,6 +83,10 @@ class GoodsHistoryOperationSearch extends GoodsHistoryOperation
             $query->andFilterWhere([
                 'goods_id' => $this->goods_id
             ]);
+
+        // Agregar condicion de rango de fechas 
+        $query->andFilterWhere(['>=', 'updated_at', $this->createTimeStart])
+            ->andFilterWhere(['<', 'updated_at', $this->createTimeEnd]);
 
         return $dataProvider;
     }

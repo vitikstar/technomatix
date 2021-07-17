@@ -14,7 +14,7 @@ $this->title = 'Список товарів';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="asu-grupa-index">
+<div class="goodsindex">
     <p>
         <?= Html::a('Додати товар', ['create'], ['class' => 'btn btn-success']) ?>
     </p>

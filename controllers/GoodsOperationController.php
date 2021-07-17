@@ -13,13 +13,16 @@ class GoodsOperationController extends Controller
 
     public function actionIndex()
     {
-
         $searchModel = new GoodsHistoryOperationSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $params = Yii::$app->request->queryParams;
 
+        $updated_at = $params['updated_at'];
+
+        $dataProvider = $searchModel->search($params);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'updated_at' => $updated_at
         ]);
     }
     public function actionDelete($id)

@@ -6,7 +6,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Список товарів', 'url
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Оновлення';
 ?>
-<div class="asu-grupa-update">
+<div class="goods-update">
 
     <?= $this->render('_form', [
         'model' => $model
